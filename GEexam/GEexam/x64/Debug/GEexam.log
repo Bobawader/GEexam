@@ -1,2 +1,10 @@
-﻿  GEexam.cpp
+﻿  Box.cpp
+  CollideSpheres.cpp
+  ComponentManager.cpp
+  EntityManager.cpp
+  GEexam.cpp
+  SystemManager.cpp
+  World.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   GEexam.vcxproj -> C:\Github\OpenGL\GE_Folder\GEexam\GEexam\x64\Debug\GEexam.exe

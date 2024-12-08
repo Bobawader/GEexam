@@ -138,22 +138,28 @@
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CollideSpheres.cpp" />
+    <ClCompile Include="ComponentManager.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="GEexam.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
     <ClCompile Include="Spheres.cpp" />
+    <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CollideSpheres.h" />
+    <ClInclude Include="ComponentManager.h" />
+    <ClInclude Include="EntityManager.h" />
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderLoader.h" />
     <ClInclude Include="Spheres.h" />
+    <ClInclude Include="SystemManager.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
