@@ -2,11 +2,15 @@
 #include <glad/glad.h>
 #include <iostream>
 
-Spheres::Spheres(float radius, const glm::vec3& initialPosition) : mRadius(radius), mPosition(initialPosition)
-{
+//Spheres::Spheres(float radius, const glm::vec3& initialPosition) : mRadius(radius), mPosition(initialPosition)
+//{
+//    createSphere();
+//}
+
+Spheres::Spheres(float radius, const glm::vec3& initialPosition, const glm::vec3& initialVelocity)
+    : mRadius(radius), mPosition(initialPosition), mVelocity(initialVelocity), mass(1.0f) {
     createSphere();
 }
-
 
 void Spheres::createSphere() {
     // Generate vertices for an icosahedron-based sphere
@@ -52,8 +56,8 @@ void Spheres::renderSphere(Shader& shader, const glm::mat4& view, const glm::mat
 
     glm::mat4 model = glm::mat4(1.0f);
     //model = glm::translate(model, (0.0f,0.0f,0.0f))
-    model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // Correct syntax
-
+    //model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // Correct syntax
+    model = glm::translate(model, mPosition);
     model = glm::scale(model, glm::vec3(mRadius));
 
     shader.setMat4("model", model);
@@ -70,11 +74,10 @@ void Spheres::renderSphere(Shader& shader, const glm::mat4& view, const glm::mat
     shader.setBool("useFlatColor", false);
 }
 
-
-//void Spheres::updateSphere(const Datasett& surface) {
-//    mPhysics.updatePosition(surface);
-//
-//}
+void Spheres::update(float deltaTime)
+{
+    mPosition += mVelocity * deltaTime;
+}
 
 
 

@@ -3,7 +3,6 @@ out vec4 FragColor;
 
 in vec3 FragPos;
 in vec3 Normal;
-in float Friction;
 
 uniform vec3 lightPos;
 uniform vec3 viewPos;
@@ -18,11 +17,7 @@ void main() {
         return;
     }
 
-    if (Friction > 0.5) {
-        // Render with a flat color for friction zones
-        FragColor = vec4(0.0, 0.0, 1.0, 1.0); // Greenish color for friction zones
-        return;
-    }
+    
 
     // Phong shading
     // Ambient lighting

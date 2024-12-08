@@ -5,6 +5,21 @@
 #include "Camera.h"
 #include "Shader.h"
 #include "Spheres.h"
+#include "World.h"
+
+
+//Lua includes
+extern "C"
+{
+#include "lua54/include/lua.h"
+#include "lua54/include/lauxlib.h"
+#include "lua54/include/lualib.h"
+}
+
+// Link to lua library
+#ifdef _WIN32
+#pragma comment(lib, "lua54/lua54.lib")
+#endif
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window, Camera& camera);
@@ -60,19 +75,27 @@ int main()
     //-------------------------------------Forward--Declarations-------------------------------------//
     //-----------------------------------------------------------------------------------------------//
     Camera camera;
-    Spheres sphere(1.0f, glm::vec3(0.0f, 0.0f, 0.0f)); // Radius = 1.0f, Position = (0, 0, 0)
+    World world;
 
 
+    world.addSphereToBox(Spheres(1.0f, glm::vec3(0.5f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
+    world.addSphereToBox(Spheres(1.0f, glm::vec3(0.0f, 1.0f, -10.0f), glm::vec3(0.0f, 0.0f, -0.3f)));
 
+    
+
+    
     //-----------------------------------------------------------------------------------------------//
     //-----------------------------------------RenderLoop--------------------------------------------//
     //-----------------------------------------------------------------------------------------------//
 
+    float deltaTime = 0.016f;
 
     while (!glfwWindowShouldClose(window))
     {
         camera.processInput(window);
         processInput(window, camera);
+        world.update(deltaTime);
+
         
 
 
@@ -84,7 +107,8 @@ int main()
 
         glm::mat4 model = glm::mat4(1.0f);
 
-        sphere.renderSphere(ourShader,view,projection);
+        world.render(ourShader, view, projection);
+        
 
         glfwSwapBuffers(window);
         glfwPollEvents();
