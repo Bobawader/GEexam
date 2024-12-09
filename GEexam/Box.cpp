@@ -25,6 +25,7 @@ void Box::update(float deltaTime) {
 
     // Update spheres via CollideSpheres
     mCollideSpheres.update(deltaTime);
+    //mCollideSpheres.printAllEntities();
 }
 
 void Box::render(Shader& shader, const glm::mat4& view, const glm::mat4& projection) {

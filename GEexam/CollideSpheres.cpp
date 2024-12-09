@@ -1,4 +1,5 @@
 #include "CollideSpheres.h"
+#include <functional>
 
 
 CollideSpheres::CollideSpheres(const glm::vec3& boxPosition, const glm::vec3& boxSize)
@@ -9,25 +10,55 @@ CollideSpheres::CollideSpheres(const glm::vec3& boxPosition, const glm::vec3& bo
 
 
 uint32_t CollideSpheres::addSphere(const glm::vec3& position, const glm::vec3& velocity, float radius, const glm::vec3& color) {
-    // Create entity
     uint32_t entity = mEntityManager.createEntity();
-
-    // Ensure component storage can handle this entity
     if (entity >= mComponents.transforms.size()) {
         mComponents.resize(entity + 1);
     }
 
-    // Assign components
+    size_t vertexCount;
+    uint32_t vao = createSphereVAO(radius, vertexCount);
+
     mComponents.transforms[entity] = { position, {}, glm::vec3(1.0f) };
     mComponents.physics[entity] = { velocity, 1.0f, radius };
 
-    // Example: Initialize VAO for sphere rendering
-    uint32_t vao = 0; // Replace with actual VAO initialization logic
-    mComponents.renders[entity] = { vao, 0, 0, color };
+    mComponents.renders[entity] = {
+        vao,        // VAO
+        0,          // VBO
+        0,          // EBO
+        color,      // Color
+        radius,     // Radius
+        vertexCount // Vertex Count
+    };
 
-    // Track entity locally
     mSphereEntities.push_back(entity);
     return entity;
+}
+
+void CollideSpheres::printAllEntities() {
+    std::cout << "Current Entities:" << std::endl;
+    for (uint32_t entity : mSphereEntities) {
+        // Retrieve the components for this entity
+        const TransformComponent& transform = mComponents.transforms[entity];
+        const PhysicsComponent& physics = mComponents.physics[entity];
+        const RenderComponent& render = mComponents.renders[entity];
+
+        std::cout << "Entity ID: " << entity << std::endl;
+        std::cout << "  Position: ("
+            << transform.position.x << ", "
+            << transform.position.y << ", "
+            << transform.position.z << ")" << std::endl;
+        std::cout << "  Velocity: ("
+            << physics.velocity.x << ", "
+            << physics.velocity.y << ", "
+            << physics.velocity.z << ")" << std::endl;
+        std::cout << "  Radius: " << physics.radius << std::endl;
+        std::cout << "  Color: ("
+            << render.color.x << ", "
+            << render.color.y << ", "
+            << render.color.z << ")" << std::endl;
+        std::cout << std::endl;
+    }
+    std::cout << "Total Entities: " << mSphereEntities.size() << std::endl;
 }
 
 
@@ -44,7 +75,8 @@ void CollideSpheres::update(float deltaTime) {
 
 void CollideSpheres::render(Shader& shader, const glm::mat4& view, const glm::mat4& projection) {
     // Render all entities in this box
-    RenderSystem::render(mComponents, shader, view, projection);
+    RenderSystem renderSystem;
+    renderSystem.render(mComponents, shader, view, projection);
 }
 
 void CollideSpheres::removeEntity(uint32_t entity) {
@@ -55,6 +87,94 @@ void CollideSpheres::removeEntity(uint32_t entity) {
     }
     // Optionally clear component data (depends on how you're handling deleted entities)
 }
+
+uint32_t CollideSpheres::createSphereVAO(float radius, size_t& outVertexCount)
+{
+    std::vector<glm::vec3> vertices;
+
+
+    // Icosahedron base vertices
+    glm::vec3 v0{ 0.0f, 0.0f, 1.0f };
+    glm::vec3 v1{ 1.0f, 0.0f, 0.0f };
+    glm::vec3 v2{ 0.0f, 1.0f, 0.0f };
+    glm::vec3 v3{ -1.0f, 0.0f, 0.0f };
+    glm::vec3 v4{ 0.0f, -1.0f, 0.0f };
+    glm::vec3 v5{ 0.0f, 0.0f, -1.0f };
+
+    // Subdivision function
+    std::function<void(const glm::vec3&, const glm::vec3&, const glm::vec3&, int)> subDivide;
+    subDivide = [&](const glm::vec3& a, const glm::vec3& b, const glm::vec3& c, int n) {
+        if (n > 0) {
+            glm::vec3 v1 = glm::normalize(a + b);
+            glm::vec3 v2 = glm::normalize(a + c);
+            glm::vec3 v3 = glm::normalize(c + b);
+            subDivide(a, v1, v2, n - 1);
+            subDivide(c, v2, v3, n - 1);
+            subDivide(b, v3, v1, n - 1);
+            subDivide(v3, v2, v1, n - 1);
+        }
+        else {
+            // Add triangles with normalized vertices for a perfect sphere
+            vertices.push_back(glm::normalize(a) * radius);
+            vertices.push_back(glm::normalize(b) * radius);
+            vertices.push_back(glm::normalize(c) * radius);
+        }
+        };
+
+    // Perform subdivisions
+    subDivide(v0, v1, v2, 3);
+    subDivide(v0, v2, v3, 3);
+    subDivide(v0, v3, v4, 3);
+    subDivide(v0, v4, v1, 3);
+    subDivide(v5, v2, v1, 3);
+    subDivide(v5, v3, v2, 3);
+    subDivide(v5, v4, v3, 3);
+    subDivide(v5, v1, v4, 3);
+
+    // Prepare data for VAO
+    std::vector<float> interleavedVertices;
+    for (const auto& vertex : vertices) {
+        // Position
+        interleavedVertices.push_back(vertex.x);
+        interleavedVertices.push_back(vertex.y);
+        interleavedVertices.push_back(vertex.z);
+
+        // Normal (same as position for unit sphere)
+        glm::vec3 normal = glm::normalize(vertex);
+        interleavedVertices.push_back(normal.x);
+        interleavedVertices.push_back(normal.y);
+        interleavedVertices.push_back(normal.z);
+    }
+
+
+
+    // Create VAO and buffers
+    uint32_t vao, vbo;
+    glGenVertexArrays(1, &vao);
+    glGenBuffers(1, &vbo);
+
+    glBindVertexArray(vao);
+
+    // Vertex buffer
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, interleavedVertices.size() * sizeof(float), interleavedVertices.data(), GL_STATIC_DRAW);
+
+    // Position attribute
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    // Normal attribute
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+    glBindVertexArray(0);
+
+    // Set indices count for rendering
+    outVertexCount = vertices.size();
+
+    return vao;
+}
+
 
 
 //#include "CollideSpheres.h"

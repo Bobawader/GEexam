@@ -39,11 +39,16 @@ public:
     // Add spheres as entities
     uint32_t addSphere(const glm::vec3& position, const glm::vec3& velocity, float radius, const glm::vec3& color);
 
+    void printAllEntities();
+
     // Update and render methods
     void update(float deltaTime);
     void render(Shader& shader, const glm::mat4& view, const glm::mat4& projection);
 
     void removeEntity(uint32_t entity);
+
+    /*uint32_t createSphereVAO(float radius);*/
+    uint32_t createSphereVAO(float radius, size_t& outVertexCount);
 
 private:
     glm::vec3 mBoxPosition; // Position of the box region

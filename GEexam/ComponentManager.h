@@ -21,6 +21,8 @@ struct RenderComponent {
     uint32_t vbo = 0;
     uint32_t ebo = 0;
     glm::vec3 color{ 1.0f, 0.0f, 0.0f }; // Default red
+    float radius = 1.0f;
+    size_t vertexCount = 0;
 };
 
 struct WorldBoundsComponent {

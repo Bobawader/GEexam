@@ -1,10 +1,18 @@
 ﻿  Box.cpp
+C:\Github\OpenGL\GE_Folder\GEexam\GEexam\SystemManager.h(109,49): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'Box.cpp')
+  
   CollideSpheres.cpp
-  ComponentManager.cpp
-  EntityManager.cpp
+C:\Github\OpenGL\GE_Folder\GEexam\GEexam\SystemManager.h(109,49): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'CollideSpheres.cpp')
+  
   GEexam.cpp
-  SystemManager.cpp
+C:\Github\OpenGL\GE_Folder\GEexam\GEexam\SystemManager.h(109,49): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'GEexam.cpp')
+  
   World.cpp
+C:\Github\OpenGL\GE_Folder\GEexam\GEexam\SystemManager.h(109,49): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'World.cpp')
+  
   Generating Code...
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   GEexam.vcxproj -> C:\Github\OpenGL\GE_Folder\GEexam\GEexam\x64\Debug\GEexam.exe

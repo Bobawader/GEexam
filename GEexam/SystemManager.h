@@ -89,7 +89,7 @@ public:
 // Rendering System
 class RenderSystem {
 public:
-    static void render(ComponentArrays& components, Shader& shader,const glm::mat4& view,const glm::mat4& projection) {
+    void render(ComponentArrays& components, Shader& shader, const glm::mat4& view, const glm::mat4& projection) {
         for (size_t i = 0; i < components.renders.size(); ++i) {
             const auto& transform = components.transforms[i];
             const auto& render = components.renders[i];
@@ -97,7 +97,7 @@ public:
             shader.use();
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, transform.position);
-            model = glm::scale(model, glm::vec3(transform.scale));
+            model = glm::scale(model, glm::vec3(transform.scale) * render.radius);  // Add radius scaling
 
             shader.setMat4("model", model);
             shader.setMat4("view", view);
@@ -105,7 +105,8 @@ public:
             shader.setVec3("objectColor", render.color);
 
             glBindVertexArray(render.vao);
-            glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+            // Use correct number of indices for sphere
+            glDrawArrays(GL_TRIANGLES, 0, render.vertexCount);
             glBindVertexArray(0);
         }
     }
