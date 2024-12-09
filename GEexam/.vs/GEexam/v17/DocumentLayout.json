@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\GEexam.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:GEexam.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\World.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:World.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\Box.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:Box.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\Box.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:Box.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\CollideSpheres.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:CollideSpheres.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\CollideSpheres.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:CollideSpheres.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\CollideSpheres.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:CollideSpheres.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\SystemManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:SystemManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\ComponentManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -23,24 +39,8 @@
       "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:EntityManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\GEexam.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:GEexam.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\SystemManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:SystemManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\World.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:World.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\World.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:World.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\Box.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B3CE5299-8968-474B-823E-10D8DAA66265}|GEexam.vcxproj|solutionrelative:Box.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,50 +50,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CollideSpheres.cpp",
-              "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\CollideSpheres.cpp",
-              "RelativeDocumentMoniker": "CollideSpheres.cpp",
-              "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\CollideSpheres.cpp",
-              "RelativeToolTip": "CollideSpheres.cpp",
-              "ViewState": "AgIAACAAAAAAAAAAAAAcwCMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-08T21:33:33.22Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CollideSpheres.h",
-              "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\CollideSpheres.h",
-              "RelativeDocumentMoniker": "CollideSpheres.h",
-              "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\CollideSpheres.h",
-              "RelativeToolTip": "CollideSpheres.h",
-              "ViewState": "AgIAABUAAAAAAAAAAAAMwCAAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-08T21:27:01.899Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "ComponentManager.h",
               "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\ComponentManager.h",
               "RelativeDocumentMoniker": "ComponentManager.h",
               "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\ComponentManager.h",
               "RelativeToolTip": "ComponentManager.h",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAcwDQAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-08T17:52:05.127Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Box.cpp",
+              "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\Box.cpp",
+              "RelativeDocumentMoniker": "Box.cpp",
+              "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\Box.cpp",
+              "RelativeToolTip": "Box.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-06T17:53:57.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GEexam.cpp",
+              "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\GEexam.cpp",
+              "RelativeDocumentMoniker": "GEexam.cpp",
+              "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\GEexam.cpp",
+              "RelativeToolTip": "GEexam.cpp",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAM8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-04T13:30:26.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "CollideSpheres.h",
+              "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\CollideSpheres.h",
+              "RelativeDocumentMoniker": "CollideSpheres.h",
+              "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\CollideSpheres.h",
+              "RelativeToolTip": "CollideSpheres.h",
+              "ViewState": "AgIAABUAAAAAAAAAAAAMwC8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-08T21:27:01.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CollideSpheres.cpp",
+              "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\CollideSpheres.cpp",
+              "RelativeDocumentMoniker": "CollideSpheres.cpp",
+              "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\CollideSpheres.cpp",
+              "RelativeToolTip": "CollideSpheres.cpp",
+              "ViewState": "AgIAACQAAAAAAAAAAADwv0wAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-08T21:33:33.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "EntityManager.h",
               "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\EntityManager.h",
               "RelativeDocumentMoniker": "EntityManager.h",
@@ -112,72 +138,49 @@
               "RelativeDocumentMoniker": "SystemManager.h",
               "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\SystemManager.h",
               "RelativeToolTip": "SystemManager.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAAAFgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-08T17:29:43.101Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Box.cpp",
-              "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\Box.cpp",
-              "RelativeDocumentMoniker": "Box.cpp",
-              "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\Box.cpp",
-              "RelativeToolTip": "Box.cpp",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAABsAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-06T17:53:57.252Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 3,
               "Title": "Box.h",
               "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\Box.h",
               "RelativeDocumentMoniker": "Box.h",
               "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\Box.h",
               "RelativeToolTip": "Box.h",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACEAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAADwvywAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T17:39:35.919Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GEexam.cpp",
-              "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\GEexam.cpp",
-              "RelativeDocumentMoniker": "GEexam.cpp",
-              "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\GEexam.cpp",
-              "RelativeToolTip": "GEexam.cpp",
-              "ViewState": "AgIAADsAAAAAAAAAAAAAAFcAAABnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-04T13:30:26.644Z",
+              "WhenOpened": "2024-12-06T17:39:35.919Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "World.cpp",
               "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\World.cpp",
               "RelativeDocumentMoniker": "World.cpp",
               "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\World.cpp",
               "RelativeToolTip": "World.cpp",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-06T17:15:01.327Z"
+              "WhenOpened": "2024-12-06T17:15:01.327Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "World.h",
               "DocumentMoniker": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\World.h",
               "RelativeDocumentMoniker": "World.h",
               "ToolTip": "C:\\Github\\OpenGL\\GE_Folder\\GEexam\\GEexam\\World.h",
               "RelativeToolTip": "World.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-06T17:14:12.976Z"
+              "WhenOpened": "2024-12-06T17:14:12.976Z",
+              "EditorCaption": ""
             }
           ]
         }

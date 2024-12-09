@@ -36,29 +36,24 @@ class CollideSpheres {
 public:
     CollideSpheres(const glm::vec3& boxPosition, const glm::vec3& boxSize);
 
-    // Add spheres as entities
     uint32_t addSphere(const glm::vec3& position, const glm::vec3& velocity, float radius, const glm::vec3& color);
 
     void printAllEntities();
-
-    // Update and render methods
     void update(float deltaTime);
     void render(Shader& shader, const glm::mat4& view, const glm::mat4& projection);
-
     void removeEntity(uint32_t entity);
-
-    /*uint32_t createSphereVAO(float radius);*/
     uint32_t createSphereVAO(float radius, size_t& outVertexCount);
 
-private:
-    glm::vec3 mBoxPosition; // Position of the box region
-    glm::vec3 mBoxSize;     // Size of the box region
 
-    // ECS-specific members
+    std::vector<uint32_t> mSphereEntities;
+private:
+    glm::vec3 mBoxPosition; 
+    glm::vec3 mBoxSize;     
+
     EntityManager mEntityManager;       // Manages entity IDs
     ComponentArrays mComponents;       // Stores components for entities in this box
 
-    WorldBoundsComponent mWorldBounds; // Local world bounds for the box
+    WorldBoundsComponent mWorldBounds; 
 
-    std::vector<uint32_t> mSphereEntities; // List of entity IDs in this box
+     
 };

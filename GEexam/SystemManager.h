@@ -72,7 +72,6 @@ private:
 
 
 
-// Physics Update System
 class PhysicsSystem {
 public:
     static void update(ComponentArrays& components, float deltaTime) {
@@ -86,7 +85,7 @@ public:
 };
 
 
-// Rendering System
+
 class RenderSystem {
 public:
     void render(ComponentArrays& components, Shader& shader, const glm::mat4& view, const glm::mat4& projection) {

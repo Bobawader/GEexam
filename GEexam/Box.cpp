@@ -5,9 +5,9 @@
 Box::Box(const glm::vec3& position, const glm::vec3& size)
     : mPosition(position),
     mSize(size),
-    mCollideSpheres(position, size), // Initialize CollideSpheres with position and size
+    mCollideSpheres(position, size), 
     mParticleSystem(1000, position - size / 2.0f, position + size / 2.0f) {
-    makingBox(); // Set up geometry for the box
+    makingBox(); 
 }
 
 uint32_t Box::addSphereEntity(const glm::vec3& position, const glm::vec3& velocity, float radius, const glm::vec3& color) {
@@ -23,7 +23,7 @@ void Box::update(float deltaTime) {
     mParticleSystem.setBounds(boxMin, boxMax);
     mParticleSystem.update(deltaTime);
 
-    // Update spheres via CollideSpheres
+    
     mCollideSpheres.update(deltaTime);
     //mCollideSpheres.printAllEntities();
 }
@@ -48,13 +48,10 @@ void Box::render(Shader& shader, const glm::mat4& view, const glm::mat4& project
     shader.setBool("useFlatColor", false);
 
     glBindVertexArray(mVAO);
-    glDrawElements(GL_TRIANGLES, 6 * 5, GL_UNSIGNED_INT, 0); // Render box geometry
+    glDrawElements(GL_TRIANGLES, 6 * 5, GL_UNSIGNED_INT, 0); 
     glBindVertexArray(0);
 
-    // Render particles
     mParticleSystem.render(shader, view, projection);
-
-    // Render spheres via CollideSpheres
     mCollideSpheres.render(shader, view, projection);
 }
 
@@ -63,7 +60,7 @@ void Box::makingBox() {
     float halfHeight = mSize.y / 2.0f;
     float halfDepth = mSize.z / 2.0f;
 
-    // Define vertices for the floor and walls
+    
     float vertices[] = {
         // Floor (y = 0)
         -halfWidth, 0.0f, -halfDepth,  0.0f, 1.0f, 0.0f, // Bottom-left

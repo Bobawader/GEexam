@@ -13,24 +13,21 @@ class Box {
 public:
     Box(const glm::vec3& position, const glm::vec3& size);
 
-    // Manage spheres
+   
     uint32_t addSphereEntity(const glm::vec3& position, const glm::vec3& velocity, float radius, const glm::vec3& color);
-
-    // Update and render
     void update(float deltaTime);
     void render(Shader& shader, const glm::mat4& view, const glm::mat4& projection);
 
 private:
-    glm::vec3 mPosition; // Box position
-    glm::vec3 mSize;     // Box dimensions (width, height, depth)
+    glm::vec3 mPosition; 
+    glm::vec3 mSize; 
 
-    // Subsystems
-    CollideSpheres mCollideSpheres; // Manages sphere entities in this box
-    ParticleSystem mParticleSystem; // Manages particles within the box
+    
+    CollideSpheres mCollideSpheres; 
+    ParticleSystem mParticleSystem; 
 
-    // Geometry setup for the box
     GLuint mVAO, mVBO, mEBO;
-    void makingBox(); // Initializes VAO/VBO/EBO for box rendering
+    void makingBox(); 
 };
 
 //class Box {

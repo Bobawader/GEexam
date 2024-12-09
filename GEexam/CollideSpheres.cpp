@@ -74,7 +74,6 @@ void CollideSpheres::update(float deltaTime) {
 }
 
 void CollideSpheres::render(Shader& shader, const glm::mat4& view, const glm::mat4& projection) {
-    // Render all entities in this box
     RenderSystem renderSystem;
     renderSystem.render(mComponents, shader, view, projection);
 }
@@ -85,15 +84,12 @@ void CollideSpheres::removeEntity(uint32_t entity) {
     if (it != mSphereEntities.end()) {
         mSphereEntities.erase(it);
     }
-    // Optionally clear component data (depends on how you're handling deleted entities)
 }
 
 uint32_t CollideSpheres::createSphereVAO(float radius, size_t& outVertexCount)
 {
     std::vector<glm::vec3> vertices;
 
-
-    // Icosahedron base vertices
     glm::vec3 v0{ 0.0f, 0.0f, 1.0f };
     glm::vec3 v1{ 1.0f, 0.0f, 0.0f };
     glm::vec3 v2{ 0.0f, 1.0f, 0.0f };
@@ -114,7 +110,6 @@ uint32_t CollideSpheres::createSphereVAO(float radius, size_t& outVertexCount)
             subDivide(v3, v2, v1, n - 1);
         }
         else {
-            // Add triangles with normalized vertices for a perfect sphere
             vertices.push_back(glm::normalize(a) * radius);
             vertices.push_back(glm::normalize(b) * radius);
             vertices.push_back(glm::normalize(c) * radius);

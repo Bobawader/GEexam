@@ -22,7 +22,85 @@ extern "C"
 #endif
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow* window, Camera& camera);
+void processInput(GLFWwindow* window, Camera& camera, bool& shouldReloadScript);
+
+
+ComponentArrays gComponents;
+
+int lua_createEntity(lua_State* L) {
+    uint32_t entity = gComponents.transforms.size();
+    gComponents.resize(entity + 1);
+
+    std::cout << "Lua created entity ID: " << entity << std::endl;
+
+    lua_pushinteger(L, entity); // Return entity ID
+    return 1; // Number of return values
+}
+
+
+
+int lua_setPosition(lua_State* L) {
+    uint32_t entity = lua_tointeger(L, 1); // Get entity ID
+    float x = lua_tonumber(L, 2);          // Get x coordinate
+    float y = lua_tonumber(L, 3);          // Get y coordinate
+    float z = lua_tonumber(L, 4);          // Get z coordinate
+
+
+    if (entity < gComponents.transforms.size()) {
+        gComponents.transforms[entity].position = { x, y, z };
+    }
+    else {
+        std::cerr << "Invalid entity ID: " << entity << std::endl;
+    }
+
+    return 0; // No return values
+}
+
+int lua_setVelocity(lua_State* L) {
+    uint32_t entity = lua_tointeger(L, 1);
+    float vx = lua_tonumber(L, 2);
+    float vy = lua_tonumber(L, 3);
+    float vz = lua_tonumber(L, 4);
+
+    if (entity < gComponents.physics.size()) {
+        gComponents.physics[entity].velocity = { vx, vy, vz };
+    }
+    else {
+        std::cerr << "Invalid entity ID: " << entity << std::endl;
+    }
+
+    return 0;
+}
+
+int lua_setColor(lua_State* L) {
+    uint32_t entity = lua_tointeger(L, 1);
+    float r = lua_tonumber(L, 2);
+    float g = lua_tonumber(L, 3);
+    float b = lua_tonumber(L, 4);
+
+    if (entity < gComponents.renders.size()) {
+        gComponents.renders[entity].color = { r, g, b };
+    }
+    else {
+        std::cerr << "Invalid entity ID: " << entity << std::endl;
+    }
+
+    return 0;
+}
+
+
+// Register functions in Lua
+void registerLuaFunctions(lua_State* L) {
+
+    int lua_setVelocity(lua_State * L);
+    int lua_setPosition(lua_State * L);
+    int lua_setColor(lua_State * L);
+
+    lua_register(L, "createEntity", lua_createEntity);
+    lua_register(L, "setPosition", lua_setPosition);
+    lua_register(L, "setVelocity", lua_setVelocity);
+    lua_register(L, "setColor", lua_setColor);
+}
 
 const unsigned int SCR_WIDTH = 1280;
 const unsigned int SCR_HEIGHT = 720;
@@ -78,13 +156,48 @@ int main()
     World world;
 
     world.addBox(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(50.0f, 10.0f, 50.0f)); // Add a box to the world
-    world.createSphereEntity(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 1.0f, glm::vec3(0.0f, 1.0f, 0.0f)); // Add a sphere to the box
-    world.createSphereEntity(glm::vec3(0.0f, 1.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), 1.0f, glm::vec3(0.0f, 1.0f, 0.0f)); // Add a sphere to the box
+    //world.createSphereEntity(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 1.0f, glm::vec3(0.0f, 1.0f, 0.0f)); // Add a sphere to the box
+    //world.createSphereEntity(glm::vec3(0.0f, 1.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), 1.0f, glm::vec3(0.0f, 1.0f, 0.0f)); // Add a sphere to the box
 
     /*world.addSphereToBox(Spheres(1.0f, glm::vec3(0.5f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
     world.addSphereToBox(Spheres(1.0f, glm::vec3(0.0f, 1.0f, -10.0f), glm::vec3(0.0f, 0.0f, -0.3f)));*/
 
+
+    //-----------------------------------------------------------------------------------------------//
+    //---------------------------------------------Lua-----------------------------------------------//
+    //-----------------------------------------------------------------------------------------------//
+
+    lua_State* L = luaL_newstate();
+    luaL_openlibs(L); // Load Lua standard libraries
+
+
+    registerLuaFunctions(L);
+
+    std::unordered_set<uint32_t> processedEntities;
+
+    // Load and execute the Lua script
+    if (luaL_dofile(L, "myLua.lua") != LUA_OK) {
+        std::cerr << "Error loading Lua script: " << lua_tostring(L, -1) << std::endl;
+    }
+
+    
+    for (size_t i = 0; i < gComponents.transforms.size(); ++i) {
+        if (gComponents.transforms[i].position != glm::vec3(0.0f)) {
+            std::cout << "Adding entity " << i << " to the world with position: ("
+                << gComponents.transforms[i].position.x << ", "
+                << gComponents.transforms[i].position.y << ", "
+                << gComponents.transforms[i].position.z << ")" << std::endl;
+            world.createSphereEntity(
+                gComponents.transforms[i].position,
+                gComponents.physics[i].velocity,
+                1.0f,  // default radius
+                gComponents.renders[i].color
+            );
+        }
+    }
    
+    bool shouldReloadScript = false;
+
     //-----------------------------------------------------------------------------------------------//
     //-----------------------------------------RenderLoop--------------------------------------------//
     //-----------------------------------------------------------------------------------------------//
@@ -94,8 +207,47 @@ int main()
     while (!glfwWindowShouldClose(window))
     {
         camera.processInput(window);
-        processInput(window, camera);
+        processInput(window, camera, shouldReloadScript);
+
+
+        if (shouldReloadScript) {
+            std::cout << "Reloading Lua script...\n";
+
+            // Mark existing entities as processed before reloading
+            for (size_t i = 0; i < gComponents.transforms.size(); ++i) {
+                processedEntities.insert(i);
+            }
+
+            if (luaL_dofile(L, "myLua.lua") != LUA_OK) {
+                std::cerr << "Error reloading Lua script: " << lua_tostring(L, -1) << std::endl;
+            }
+            else {
+                std::cout << "Lua script reloaded successfully! Entities: " << gComponents.transforms.size() << "\n";
+
+                // Add only new entities created by Lua
+                for (size_t i = 0; i < gComponents.transforms.size(); ++i) {
+                    if (processedEntities.find(i) == processedEntities.end()) {
+                        std::cout << "Adding new entity " << i << " to the world with position: ("
+                            << gComponents.transforms[i].position.x << ", "
+                            << gComponents.transforms[i].position.y << ", "
+                            << gComponents.transforms[i].position.z << ")" << std::endl;
+
+                        world.createSphereEntity(
+                            gComponents.transforms[i].position,
+                            gComponents.physics[i].velocity,
+                            1.0f, // default radius
+                            gComponents.renders[i].color
+                        );
+                        processedEntities.insert(i); // Mark entity as processed
+                    }
+                }
+            }
+            shouldReloadScript = false;
+        }
+
         world.update(deltaTime);
+
+        
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -112,14 +264,26 @@ int main()
     }
 
     glfwTerminate();
+    lua_close(L);
     return 0;
 }
 
-void processInput(GLFWwindow* window, Camera& camera) {
+
+void processInput(GLFWwindow* window, Camera& camera, bool& shouldReloadScript) {
     // Check for escape key
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
 
+    static bool reloadKeyPressed = false;
+    if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) {
+        if (!reloadKeyPressed) {
+            shouldReloadScript = true; 
+            reloadKeyPressed = true;  
+        }
+    }
+    else {
+        reloadKeyPressed = false; 
+    }
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)

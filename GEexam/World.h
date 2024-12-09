@@ -13,18 +13,15 @@ public:
     // Add a new sphere entity to the world
     uint32_t createSphereEntity(const glm::vec3& position, const glm::vec3& velocity, float radius, glm::vec3 color);
 
-    // Add a box to the world
     void addBox(const glm::vec3& position, const glm::vec3& size);
-
-    // Update and render the world
     void update(float deltaTime);
     void render(Shader& shader, const glm::mat4& view, const glm::mat4& projection);
 
 private:
-    std::vector<Box> mBox;               // Boxes in the world
-    EntityManager mEntityManager;        // Manages entities
-    ComponentArrays mComponents;        // Stores components for all entities
-    WorldBoundsComponent mWorldBounds;  // Global world bounds
+    std::vector<Box> mBox;              
+    EntityManager mEntityManager;        
+    ComponentArrays mComponents;       
+    WorldBoundsComponent mWorldBounds;  
 };
 
 
