@@ -25,9 +25,15 @@ if not entity4 then
     entity4 = createEntity()
     setPosition(entity4, 20.0, 1.0, 0.5)
     setVelocity(entity4, 1.0, 0.0, 0.0)
-    setColor(entity4, 1.0, 0.0, 1.0) -- Blue
+    setColor(entity4, 1.0, 0.0, 1.0) -- Pink
 end
 
+if not entity5 then
+    entity5 = createEntity()
+    setPosition(entity5, 20.0, 1.0, 0.5)
+    setVelocity(entity5, 1.0, 0.0, 0.0)
+    setColor(entity5, 1.0, 1.0, 1.0) -- White
+end
 
 
 

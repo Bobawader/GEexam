@@ -156,8 +156,8 @@ int main()
     World world;
 
     world.addBox(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(50.0f, 10.0f, 50.0f)); // Add a box to the world
-    //world.createSphereEntity(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 1.0f, glm::vec3(0.0f, 1.0f, 0.0f)); // Add a sphere to the box
-    //world.createSphereEntity(glm::vec3(0.0f, 1.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), 1.0f, glm::vec3(0.0f, 1.0f, 0.0f)); // Add a sphere to the box
+    //world.createSphereEntity(glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f), 1.0f, glm::vec3(0.0f, 1.0f, 0.0f)); 
+    //world.createSphereEntity(glm::vec3(0.0f, 1.0f, -10.0f), glm::vec3(0.0f, 0.0f, 0.0f), 1.0f, glm::vec3(0.0f, 1.0f, 0.0f)); // Add a sphere to the box ECS style
 
     /*world.addSphereToBox(Spheres(1.0f, glm::vec3(0.5f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f)));
     world.addSphereToBox(Spheres(1.0f, glm::vec3(0.0f, 1.0f, -10.0f), glm::vec3(0.0f, 0.0f, -0.3f)));*/
